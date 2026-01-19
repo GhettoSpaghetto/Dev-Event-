@@ -1,3 +1,5 @@
+import PHProvider from "./providers/PosthHogProvider"
+
 import type { Metadata } from "next";
 import {Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import LightRays from "@/components/LightRays";
@@ -27,32 +29,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${schibstedGrotesk.variable} min-h-screen ${martianMono.variable} antialiased`}>
-        <Navbar />
+        <PHProvider>
+          <Navbar />
 
-        <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
+          <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
 
-          <LightRays
-          raysOrigin="top-center"
-          raysColor="#5dfeca"
-          raysSpeed={0.5}
-          lightSpread={0.9}
-          rayLength={1.4}
-          followMouse={true}
-          mouseInfluence={0.02}
-          noiseAmount={0}
-          distortion={0}
-          className="custom-rays"
-          pulsating={false}
-          fadeDistance={1}
-          saturation={1}
-        />
+            <LightRays
+            raysOrigin="top-center"
+            raysColor="#5dfeca"
+            raysSpeed={0.5}
+            lightSpread={0.9}
+            rayLength={1.4}
+            followMouse={true}
+            mouseInfluence={0.02}
+            noiseAmount={0}
+            distortion={0}
+            className="custom-rays"
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
+          />
 
-        </div>
-        
-        <main>
-          {children}
+          </div>
+          
+          <main>
+            {children}
 
-        </main>
+          </main>
+        </PHProvider>
       </body>
     </html>
   );
