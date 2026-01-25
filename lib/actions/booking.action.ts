@@ -10,8 +10,12 @@ export const createBooking = async ({eventId, slug, email}: {eventId: string; sl
 
         return {success: true };
 
-    } catch (e) {
-        console.error('error booking failed', e);
-        return {success: false};
-    }
+    } catch (error) {
+  console.error("Create booking FULL ERROR:", error);
+  return {
+    success: false,
+    message: (error as any)?.message || "Unknown booking error",
+  };
+}
+
 }
